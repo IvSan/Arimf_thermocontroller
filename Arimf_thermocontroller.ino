@@ -147,6 +147,7 @@ void programm() {
 
   if (state.last_run_success == 0 && progress_timer.is_programm_done()) {
     state.last_run_success = 1;
+    state.progress_minute_dozens = progress_timer.get_progress_minute_dozens();
     state.save();
     Serial.println("Program finished");
     return;
