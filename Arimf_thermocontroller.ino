@@ -57,6 +57,7 @@ void setup() {
   hysteresis.set_temprtr_target(state.temprtr_target);
 
   temprtr_read_timer.setInterval(1000);
+  state_save_timer.setInterval(eeprom_save_timeout);
 
   Serial.println("Setup complete");
 }
@@ -66,8 +67,6 @@ void loop() {
   backward_button.tick();
 
   if (temprtr_read_timer.isReady()) temprtr_actual = thermocouple.readCelsius();
-
-  if (!state_save_timer.isEnabled()) state_save_timer.setInterval(eeprom_save_timeout);
   if (state_save_timer.isReady() && !(state.mode == 2 && state.last_run_success == 1)) state.save();
 
   switch (state.mode) {
@@ -81,10 +80,6 @@ void loop() {
     default:
       ask_for_mode();
       break;
-  }
-
-  if (backward_button.isPress() && forward_button.isPress()) {
-    state.save();
   }
 }
 
