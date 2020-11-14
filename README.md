@@ -1,6 +1,7 @@
 # Arimf thermocontroller
 
-[Original source](https://www.youtube.com/watch?v=4aqmQMhZzVo)
+Arduino compatible electric melting furnace controller firmware.  
+All details you can find [here](https://www.youtube.com/watch?v=4aqmQMhZzVo).
 
 Used libs:
   * [LiquidCrystal-I2C](https://github.com/fdebrabander/Arduino-LiquidCrystal-I2C-library)
